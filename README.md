@@ -12,7 +12,7 @@ This is an introduction to reinforcement learning based on the Imperial College 
 
 ## Tabular methods
 
-Inspired by Sutton and Barton's example in the 4th chapter of its book to learn how to implement tabular methods such as Dynamic programming, and also methods that do not require full knowledge of the dynamic of the environment, namely Monte-Carlo Methods and Temporal-Difference learning. We aim to solve a maze where an agent starts from the top-row cells and its goal is to reach the green cell by maximizing the reward function, considering that when the absorbing states (i.e., the purple ones) are reached the agent gets a reward of -50, -1 when reaching a blue cell and 500 when reaching the goal cell.
+Inspired by Sutton and Barton's example in the 4th chapter of its book we will solve a maze to learn how to implement tabular methods. We will implement methods such as Dynamic programming, and others that do not require full knowledge of the dynamic of the environment, namely Monte-Carlo Methods and Temporal-Difference learning. We aim to solve a maze where an agent starts from the top-row cells and its goal is to reach the green cell by maximizing the reward function, considering that when the absorbing states (i.e., the purple ones) are reached the agent gets a reward of -50, -1 when reaching a blue cell and 500 when reaching the goal cell.
 
 <p align="center">
 <img src="./imgs/maze.png" width="200"/>
@@ -25,7 +25,7 @@ Bear in mind that value iteration is a specific version of policy iteration that
 
 Optimal Policy    | Optimal Value function
 :---------------------------------:|:-------------------------:
-![Optimal Policy](out/dp/policy_grid.png) | ![Optimal Value function](out/dp/value_grid.png)
+![Optimal Policy](out/dp/policy_grid_normal.png) | ![Optimal Value function](out/dp/value_grid_normal.png)
 
 See the notebook for further details on the influence of $\gamma$ and $p$ on the optimal value function and policy.
 ### Monte-Carlo Methods

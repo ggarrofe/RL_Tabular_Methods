@@ -1,10 +1,11 @@
+from prompt_toolkit import print_formatted_text
 import numpy as np
 import random
 import matplotlib.pyplot as plt
 
 class GraphicsMaze(object):
 
-    def __init__(self, shape, locations, default_reward, obstacle_locs, absorbing_locs, absorbing_rewards, absorbing):
+    def __init__(self, shape, locations, default_reward, obstacle_locs, absorbing_locs, absorbing_rewards, absorbing, print=False):
 
         self.shape = shape
         self.locations = locations
@@ -21,7 +22,8 @@ class GraphicsMaze(object):
             self.rewarders[rew] = 10 if absorbing_rewards[i] > 0 else -10
 
         # Print the map to show it
-        self.paint_maps()
+        if print:
+            self.paint_maps()
 
     def paint_maps(self):
         """
@@ -166,24 +168,24 @@ class GraphicsMaze(object):
 class Maze(object):
 
     # [Action required]
-    def __init__(self):
+    def __init__(self, gamma= 0.98, prob_success=0.8, print=False):
         """
         Maze initialisation.
         input: /
         output: /
         """
 
-        self._prob_success = 0.8  # float
-        self._gamma = 0.98  # float
+        self._prob_success = prob_success  # float
+        self._gamma = gamma  # float
         self._goal = 1  # integer (0 for R0, 1 for R1, 2 for R2, 3 for R3)
 
         # Build the maze
-        self._build_maze()
+        self._build_maze(print=print)
 
     # Functions used to build the Maze environment
     # You DO NOT NEED to modify them
 
-    def _build_maze(self):
+    def _build_maze(self, print=False):
         """
         Maze initialisation.
         input: /
@@ -309,7 +311,7 @@ class Maze(object):
 
         # Creating the graphical Maze world
         self._graphics = GraphicsMaze(self._shape, self._locations, self._default_reward,
-                                      self._obstacle_locs, self._absorbing_locs, self._absorbing_rewards, self._absorbing)
+                                      self._obstacle_locs, self._absorbing_locs, self._absorbing_rewards, self._absorbing, print=print)
 
         # Reset the environment
         self.reset()

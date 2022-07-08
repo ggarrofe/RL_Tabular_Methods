@@ -36,5 +36,4 @@ class DP_agent(object):
                     policy[o_s] *= 0.0
                     policy[o_s][opt_a] = 1.0
                     
-        print("epochs: ", epochs)
-        return policy, V
+        return policy, V, epochs
