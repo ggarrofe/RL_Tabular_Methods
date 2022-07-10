@@ -21,7 +21,7 @@ class MC_agent(object):
             
         return episode, total_reward
         
-    def solve(self, env, total_episodes=1000, epsilon='cbrt'):
+    def solve(self, env, total_episodes=1000, epsilon='1/cbrt(n_episodes)'):
         """
         Solve a given Maze environment using Monte Carlo learning
         input: env {Maze object} -- Maze to solve
