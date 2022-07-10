@@ -86,7 +86,6 @@ class MC_agent(object):
                         else:
                             policy[s_t][a] = E/env.get_action_size()
             
-            print(np.sum(policy, axis=1))
             values.append(np.sum(policy*Q, axis=1))
 
         return policy, values, total_rewards
