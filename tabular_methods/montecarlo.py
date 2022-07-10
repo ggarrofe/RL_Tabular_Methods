@@ -1,4 +1,5 @@
 import numpy as np
+from tqdm.notebook import tqdm
 
 # This class define the Monte-Carlo agent
 
@@ -20,7 +21,7 @@ class MC_agent(object):
             
         return episode, total_reward
         
-    def solve(self, env):
+    def solve(self, env, total_episodes=1000, epsilon='cbrt'):
         """
         Solve a given Maze environment using Monte Carlo learning
         input: env {Maze object} -- Maze to solve
@@ -29,9 +30,7 @@ class MC_agent(object):
           - values {list of np.array} -- List of successive value functions for each episode 
           - total_rewards {list of float} -- Corresponding list of successive total non-discounted sum of reward for each episode 
         """
-
-        # Initialisation (can be edited)
-        TOTAL_EPISODES = 1000
+        # Initialisation
         Q = np.random.rand(env.get_state_size(), env.get_action_size())
         V = np.zeros(env.get_state_size())
         
@@ -46,15 +45,20 @@ class MC_agent(object):
         n_episodes = 0
         counts = dict()
         
-        while n_episodes < TOTAL_EPISODES:
+        for n_episodes in tqdm(range(total_episodes), unit="episode", leave=False):
             
             episode, total_reward = self.generate_episode(env, policy)
             total_rewards.append(total_reward)
             
-            print("Solving episode %d, of length %d" % (n_episodes, len(episode)), end='\r')
-            
             G = 0
-            E = 1/np.cbrt(n_episodes+1)
+            if type(epsilon) == str and epsilon=='1/cbrt(n_episodes)':
+                E = 1/np.cbrt(n_episodes+1)
+            elif type(epsilon) == str and epsilon=='1/sqrt(n_episodes)':
+                E = 1/np.sqrt(n_episodes+1)
+            elif type(epsilon) == str and epsilon=='1/n_episodes':
+                E = 1/(n_episodes+1)
+            elif type(epsilon) == float:
+                E = epsilon
             
             for t in range(len(episode)-2, -1, -1):
                 G = env.get_gamma() * G + episode[t+1][0] 
@@ -81,10 +85,8 @@ class MC_agent(object):
                             policy[s_t][a] = 1 - E + E/env.get_action_size()
                         else:
                             policy[s_t][a] = E/env.get_action_size()
-                    
+            
+            print(np.sum(policy, axis=1))
             values.append(np.sum(policy*Q, axis=1))
-            n_episodes += 1
-        
-        print()
 
         return policy, values, total_rewards

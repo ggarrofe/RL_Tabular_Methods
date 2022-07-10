@@ -1,4 +1,3 @@
-from prompt_toolkit import print_formatted_text
 import numpy as np
 import random
 import matplotlib.pyplot as plt
