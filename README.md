@@ -12,7 +12,7 @@ This is an introduction to reinforcement learning based on the Imperial College 
 
 ## Tabular methods
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/googlecolab/colabtools/blob/main/tabular_methods.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/ggarrofe/ReinforcementLearning/blob/main/tabular_methods.ipynb)
 
 Inspired by Sutton and Barton's example in the 4th chapter of its book we will solve a maze to learn how to implement tabular methods. We will implement methods such as Dynamic programming, and others that do not require full knowledge of the dynamic of the environment, namely Monte-Carlo Methods and Temporal-Difference learning. We aim to solve a maze where an agent starts from the top-row cells and its goal is to reach the green cell by maximizing the reward function, considering that when the absorbing states (i.e., the purple ones) are reached the agent gets a reward of -50, -1 when reaching a blue cell and 500 when reaching the goal cell.
 
