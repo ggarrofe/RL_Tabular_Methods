@@ -7,8 +7,6 @@ This is an introduction to reinforcement learning based on the Imperial College 
     * [Dynamic Programming](#dynamic-programming)
     * [Monte-Carlo Methods](#monte-carlo-methods)
     * [Temporal-Difference learning](#temporal-difference-learning)
-* [Deep Reinforcement Learning](#deep-reinforcement-learning)
-
 
 ## Tabular methods
 
@@ -53,5 +51,3 @@ Optimal policy after 1000 episodes  | Corresponding optimal value function.
 
 
 ![Monte-Carlo learning curve](out/td/Qlearning_learningcurve.png)
-## Deep Reinforcement learning
-
