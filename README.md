@@ -1,6 +1,6 @@
 # Introduction to Reinforcement Learning
 
-This is an introduction to reinforcement learning based on the Imperial College course and the corresponding resources. The code inhere covers the theory and implementation of both Tabular Methods and Deep Reinforcement Learning.
+This is an introduction to reinforcement learning based on the Imperial College course and the corresponding resources. The code inhere covers the theory and implementation of Tabular Methods.
 
 ## Table of Contents
 * [Tabular methods](#tabular-methods)
